@@ -1,0 +1,26 @@
+{
+  "name": "full-backend-zero",
+  "version": "1.0.0",
+  "description": "Hoi dan it fullstack ",
+  "main": "sever.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node sever.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thuongvo38/userManagement2.0.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "hoi dan it",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thuongvo38/userManagement2.0/issues"
+  },
+  "homepage": "https://github.com/thuongvo38/userManagement2.0#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
