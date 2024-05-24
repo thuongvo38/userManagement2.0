@@ -15,17 +15,8 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public"))); // đoạn này khai báo hơi khác so với document là bỏ ' static ' đi & public nghĩa là tên file public đó
 
 //khai báo routes
-app.get("/", (req, res) => {
-  res.send("Hello World! chao ban cung voi nodemon");
-});
-
-app.get("/abc", (req, res) => {
-  res.send("day la trang theo duong dan abc");
-});
-
-app.get("/hoidanit", (req, res) => {
-  res.render("sample.ejs");
-});
+const webRoutes = require("./routes/web");
+app.use("/", webRoutes);
 
 app.listen(port, hostname, () => {
   console.log(`Example app listening on port ${port}`);
