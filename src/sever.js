@@ -20,5 +20,24 @@ app.use("/", webRoutes);
 app.listen(port, hostname, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
+// Get the client
+const mysql = require("mysql2");
+
+// Create the connection to database
+const connection = mysql.createConnection({
+  host: "localhost",
+  port: 3307,
+  user: "root",
+  database: "hoidanit",
+  password: "123456",
+});
+
+//simple query
+connection.query("SELECT * FROM Users ", function (err, results, fields) {
+  console.log("<< check results: ", results); // results contains rows returned by server
+  // console.log(fields); // fields contains extra meta data about results, if available
+});
+
 //testing update
 //testing push secondtime
