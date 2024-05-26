@@ -8,11 +8,10 @@ const port = process.env.PORT || 8080; // init port vs env
 const hostname = process.env.HOST_NAME;
 
 //config template engine this two elements
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
+const configViewEngine = require("./config/viewEngine");
+configViewEngine(app);
 
 //config static files
-app.use(express.static(path.join(__dirname, "public"))); // đoạn này khai báo hơi khác so với document là bỏ ' static ' đi & public nghĩa là tên file public đó
 
 //khai báo routes
 const webRoutes = require("./routes/web");
