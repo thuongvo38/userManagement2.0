@@ -6,6 +6,8 @@ console.log(process.env); // remove this after you've confirmed it is working
 const app = express(); // tao express application
 const port = process.env.PORT || 8080; // init port vs env
 const hostname = process.env.HOST_NAME;
+//Connect database
+const connection = require("./config/database");
 
 //config template engine this two elements
 const configViewEngine = require("./config/viewEngine");
@@ -22,16 +24,8 @@ app.listen(port, hostname, () => {
 });
 
 // Get the client
-const mysql = require("mysql2");
 
 // Create the connection to database
-const connection = mysql.createConnection({
-  host: "localhost",
-  port: 3307,
-  user: "root",
-  database: "hoidanit",
-  password: "123456",
-});
 
 //simple query
 connection.query("SELECT * FROM Users ", function (err, results, fields) {
