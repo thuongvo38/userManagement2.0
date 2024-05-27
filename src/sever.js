@@ -8,6 +8,10 @@ const port = process.env.PORT || 8080; // init port vs env
 const hostname = process.env.HOST_NAME;
 //Connect database
 const connection = require("./config/database");
+// for simple access data from a form  -- config reg.body
+
+app.use(express.json()); // for json
+app.use(express.urlencoded({ extended: true })); // for form data
 
 //config template engine this two elements
 const configViewEngine = require("./config/viewEngine");
@@ -28,10 +32,6 @@ app.listen(port, hostname, () => {
 // Create the connection to database
 
 //simple query
-connection.query("SELECT * FROM Users ", function (err, results, fields) {
-  console.log("<< check results: ", results); // results contains rows returned by server
-  // console.log(fields); // fields contains extra meta data about results, if available
-});
 
 //testing update
 //testing push secondtime
