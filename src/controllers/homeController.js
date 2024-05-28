@@ -1,5 +1,6 @@
 const connection = require("../config/database");
-const getHomepage = (reg, res) => {
+const { getAllUsers } = require("../services/CURDservice");
+const getHomepage = async (req, res) => {
   // // xuat thong tin user
   // let user = [];
   // //simple query
@@ -10,7 +11,9 @@ const getHomepage = (reg, res) => {
   //   // console.log(fields); // fields contains extra meta data about results, if available
   // });
 
-  return res.render("home");
+  let results = await getAllUsers();
+  console.log("<< check results: ", results); // results contains rows returned by server
+  return res.render("home.ejs", { listUsers: results });
 };
 
 const getAbc = (req, res) => {
