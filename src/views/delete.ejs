@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Update a User</title>
+    <title>Delete a User</title>
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
@@ -13,27 +13,20 @@
     </div>
     <!-- <%= JSON.stringify(userEdit)%>   testing xem userEdit duoc truyen vao ejs chua  -->
     <div class="form-add-new">
-      <form action="/update-users" method="POST">
+      <form action="/delete-user" method="POST">
         <fieldset>
-          <legend>Edit a user:</legend>
+          <legend>Delete a user:</legend>
           <div class="input-group d-none">
             <label for="">Id</label>
             <input type="text" name="userId" value="<%=userEdit.id%>" />
           </div>
           <div class="input-group">
-            <label for="">Email</label>
+            <label for="">Are you sure to remove user with Email</label>
             <input type="text" name="email" value="<%=userEdit.email%>" />
           </div>
-          <div class="input-group">
-            <label for="">Name</label>
-            <input type="text" name="myname" value="<%=userEdit.name%>" />
-          </div>
-          <div class="input-group">
-            <label for="">City</label>
-            <input type="text" name="city" value="<%=userEdit.city%>" />
-          </div>
+
           <div>
-            <button>Save</button>
+            <button>Confirm</button>
           </div>
         </fieldset>
       </form>

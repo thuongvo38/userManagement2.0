@@ -1,5 +1,5 @@
 const connection = require("../config/database");
-const { getAllUsers, getUserById } = require("../services/CURDservice");
+const { getAllUsers, getUserById, updateUserById, deleteUserById } = require("../services/CURDservice");
 const getHomepage = async (req, res) => {
   // // xuat thong tin user
   // let user = [];
@@ -62,6 +62,34 @@ const postCreateUser = async (req, res) => {
   ]);
   res.send("created successfully !");
 };
+const postUpdateUser = async (req, res) => {
+  let name = req.body.myname;
+  let email = req.body.email;
+  let city = req.body.city;
+  console.log("<<check show right here");
+
+  // update by get data userId by tag name & method req.body in .ejs
+  let userId = req.body.userId;
+  await updateUserById(name, email, city, userId);
+  // METHOD moi de redirect to home page
+  res.redirect("/");
+};
+const postDeleteUser = async (req, res) => {
+  const userId = req.params.id;
+  // console.log(userId);
+  let user = await getUserById(userId);
+  res.render("delete.ejs", { userEdit: user });
+
+  // const userId = req.params.id;
+  // console.log(userId);
+  // const [results, fields] = await connection.query(` DELETE FROM Users WHERE id = ?`, [userId]);
+  // res.redirect("/");
+};
+const postHandleRemoveUser = async (req, res) => {
+  let id = req.body.userId;
+  await deleteUserById(id);
+  res.redirect("/");
+};
 module.exports = {
   getHomepage,
   getAbc,
@@ -69,4 +97,7 @@ module.exports = {
   postCreateUser,
   getCreatePage,
   getUpdatePage,
+  postUpdateUser,
+  postDeleteUser,
+  postHandleRemoveUser,
 };
